@@ -5,6 +5,31 @@ const tripTime = (arr) => {
         totalTime: null
     }
 
+    for (let i = 0; i < arr.length; i++) {
+        let speedLimits = arr[i].speedLimits;
+        let avgSpeed = 0;
+        let distance = 0;
+        let time = 0;
+        for (j = 0; j < speedLimits.length; j++) {
+            let curDist = speedLimits[j].distance;
+            let curSpeed = speedLimits[j].speedLimit;
+            // let weighted = (1/curDist) / (1/ )
+            // time += curDist / curSpeed;
+            // distance += curDist;
+            // avgSpeed += distance / time;
+        }
+        let segmentTime = distance / avgSpeed;
+        result.avgSpeedLimits.push(avgSpeed);
+        result.segmentTimes.push(segmentTime);
+        // time = distance / speed
+    }
+
+    // calculate the total time by adding all the segment times
+    let total = 0;
+    for (let k = 0; k < result.segmentTimes.length; k++) {
+        total += result.segmentTimes[k];
+    }
+    result.totalTime = total;
 
     return result
 }
@@ -102,4 +127,4 @@ const stops = [
 ]
 
 
-// tripTime(stops)
+console.log(tripTime(stops));
